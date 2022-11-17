@@ -39,6 +39,7 @@ func filesHandler(w http.ResponseWriter, r *http.Request) {
 		io.Copy(resFile, file)
 		defer resFile.Close()
 		log.Printf("Successfully uploaded file %q...", handler.Filename)
+		http.Redirect(w, r, "/files/success", http.StatusSeeOther)
 	}
 
 }
